@@ -24,15 +24,15 @@ services:
       - backend
 # Names our volume
   # App backend service
-  app-server:
-    # Configuration for building the docker image for the backend service
-    image: entrance-service
-    ports:
-      - "8080:8080" # Forward the exposed port 8080 on the container to port 8080 on the host machine
-    depends_on:
-      - mysql-standalone # This service depends on mysql. Start that first.
-    networks: # Networks to join (Services on the same network can communicate with each other using their name)
-      - backend
+#  app-server:
+#    # Configuration for building the docker image for the backend service
+#    image: entrance-service
+#    ports:
+#      - "8080:8080" # Forward the exposed port 8080 on the container to port 8080 on the host machine
+#    depends_on:
+#      - mysql-standalone # This service depends on mysql. Start that first.
+#    networks: # Networks to join (Services on the same network can communicate with each other using their name)
+#      - backend
 volumes:
   my-db:
 networks:
