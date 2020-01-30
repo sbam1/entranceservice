@@ -1,14 +1,14 @@
 package com.softtech.entranceService.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import com.softtech.entranceService.dto.StudentDto;
+
+import javax.persistence.*;
 
 @Entity
 public class Student {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private long studentId;
 
     private String email;
@@ -18,6 +18,19 @@ public class Student {
     private String lastName;
 
     private String address;
+
+    @OneToOne(mappedBy = "student")
+    private EntranceTestRegistration registration;
+
+    public Student(StudentDto studentDto) {
+        this.email = studentDto.getEmail();
+        this.firstName = studentDto.getFirstName();
+        this.lastName = studentDto.getLastName();
+        this.address = studentDto.getAddress();
+    }
+
+    public Student() {
+    }
 
     public long getStudentId() {
         return studentId;
